@@ -1,0 +1,89 @@
+﻿@model Project.Application.ViewModels.CompraViewModel
+
+@{
+    ViewData["Title"] = "Exclusão";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Você tem certeza que quer excluir essa compra?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <input type="hidden" asp-for="Id" />
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mercadoria)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mercadoria)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorUnitario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorUnitario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ValorTotalMercadoria)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ValorTotalMercadoria)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FreteCompra)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FreteCompra)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DespesaNF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DespesaNF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalNF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoUnitario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustoUnitario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataCompra)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataCompra)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-info">Voltar para a lista</a>
+        </div>
+    </form>
+</div>

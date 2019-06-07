@@ -1,0 +1,29 @@
+﻿@using Project.Application.ViewModels
+@model CompraViewModel
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<div class="jumbotron">
+    <h2>@ViewData["Title"]</h2>
+    <h4>@Model.Mercadoria</h4>
+</div>
+
+<div class="container">
+    <div>
+        <div class="row">
+            @Html.DisplayFor(model => model.Mercadoria)
+        </div>
+        <hr />
+        <br />
+        <div class="row">
+            @Html.DisplayFor(model => model.CustoUnitario)
+        </div>
+        <br />
+    </div>
+</div>
+
+<div>
+    <a href="javascript:history.go(-1)" class="btn btn-info">Voltar</a>
+</div>

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Architecture.Domain.Core\Architecture.Domain.Core.csproj" />
+    <ProjectReference Include="..\Architecture.Infra.CrossCutting.AspNetFilters\Architecture.Infra.CrossCutting.AspNetFilters.csproj" />
+    <ProjectReference Include="..\Architecture.Infra.CrossCutting.Bus\Architecture.Infra.CrossCutting.Bus.csproj" />
+    <ProjectReference Include="..\Architecture.Infra.CrossCutting.Identity\Architecture.Infra.CrossCutting.Identity.csproj" />
+    <ProjectReference Include="..\Project.Application\Project.Application.csproj" />
+    <ProjectReference Include="..\Projeto.Domain\Project.Domain.csproj" />
+    <ProjectReference Include="..\Projeto.Infra.Data\Project.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

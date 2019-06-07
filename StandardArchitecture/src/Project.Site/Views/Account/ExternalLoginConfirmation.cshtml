@@ -1,0 +1,36 @@
+﻿@using Architecture.Infra.CrossCutting.Identity.Models.AccountViewModels
+@model ExternalLoginConfirmationViewModel
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>Associe sua @ViewData["LoginProvider"] conta.</h3>
+
+<form asp-controller="Account" asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    <h4>Association Form</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <p class="text-info">
+        Você foi autenticado com sucesso <strong>@ViewData["LoginProvider"]</strong>.
+        Por favor, insira um endereço de e-mail para este site abaixo e clique no botão Registrar para concluir
+        fazendo login.
+    </p>
+    <div class="form-group">
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

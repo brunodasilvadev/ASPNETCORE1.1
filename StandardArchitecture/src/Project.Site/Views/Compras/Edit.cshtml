@@ -1,0 +1,135 @@
+﻿@model Project.Application.ViewModels.CompraViewModel
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Preencha todos os dados corretamente</h4>
+        <hr />
+
+        <vc:summary />
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ClienteId" />
+
+
+        <div class="form-group">
+            <label asp-for="Codigo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Codigo" class="form-control" />
+                <span asp-validation-for="Codigo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Mercadoria" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Mercadoria" class="form-control" />
+                <span asp-validation-for="Mercadoria" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Quantidade" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Quantidade" class="form-control" />
+                <span asp-validation-for="Quantidade" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ValorUnitario" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input data-val-number="O valor unitário está em formato inválido" asp-for="ValorUnitario" class="form-control" />
+                <span asp-validation-for="ValorUnitario" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="FreteCompra" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input data-val-number="O Frete - Compra está em formato inválido" asp-for="FreteCompra" class="form-control" />
+                <span asp-validation-for="FreteCompra" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DespesaNF" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input data-val-number="A DespesaNF está em formato inválido" asp-for="DespesaNF" class="form-control" />
+                <span asp-validation-for="DespesaNF" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DataCompra" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DataCompra" type="text" asp-format="{0:dd/MM/yyyy}" class="form-control" />
+                <span asp-validation-for="DataCompra" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Observacao" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Observacao" class="form-control" />
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="btnSubmit" value="Atualizar Compra" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Voltar para a lista</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/locales/bootstrap-datepicker.pt.min.js"></script>
+
+    <script>
+        ValidacoesCompra();
+    </script>
+
+    @{
+        if (ViewBag.RetornoPost != null)
+        {
+            var notificacao = ViewBag.RetornoPost.ToString().Split(',');
+
+            <script>
+                toastr["@notificacao[0]"]("@notificacao[1]")
+            </script>
+
+            if (@notificacao[0] == "success")
+            {
+                <script>
+                    toastr.options.onHidden = function () {
+                        window.location = "http://localhost:59759/Compras"
+                    };
+
+                    toastr.options.onclick = function () {
+                        window.location = "http://localhost:59759/Compras"
+                    };
+
+                    toastr.options.onCloseClick = function () {
+                        window.location = "http://localhost:59759/Compras"
+                    };
+
+                    $("#btnSubmit").prop("disabled", true);
+                </script>
+            }
+        }
+    }
+}

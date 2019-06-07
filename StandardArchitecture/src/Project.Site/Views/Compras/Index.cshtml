@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Project.Application.ViewModels.CompraViewModel>
+
+@{
+    ViewData["Title"] = "Lista de Compras";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-left">
+            <a asp-action="Create" class="btn btn-primary"><span title="Nova Compra" class="glyphicon glyphicon-plus-sign"></span> Nova Compra</a>
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Codigo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mercadoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorUnitario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorTotalMercadoria)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FreteCompra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DespesaNF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalNF)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustoUnitario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataCompra)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mercadoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorUnitario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorTotalMercadoria)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FreteCompra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DespesaNF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalNF)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CustoUnitario)
+                    </td>
+                    <td>
+                        @item.DataCompra.ToString("d")
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
