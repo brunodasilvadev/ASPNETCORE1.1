@@ -14,11 +14,11 @@ Desenvolvido com:
 - CQRS (Command Query Responsibility Segregation)
 - Claims Policy
 - Desacoplação do identity
+- Camada de serviço / API.REST
 
 Observação:
 Para criar o banco de dados, executar as migrations do projeto e do Identity
 
 // TODO
 - Acertar as mensagens em inglês da tela de validação de registrar para português
-- Camada de serviço / API
 - Projeto Angular
